@@ -148,6 +148,7 @@ PropString(Player, GfxBackend, "Graphics Backend"s, "Graphics API/backend used f
 #endif
 #endif
 PropEnum(Player, ShowFPS, "Show FPS"s, "Performance overlay display mode"s, int /* PerfUI::PerfMode */, 0, "Disable"s, "FPS"s, "Full"s);
+PropFloat(Player, UIScale, "UI Scale"s, "Scale factor applied to the in-game user interface (menus, line items, sliders, overlays).\n1 = system default. Applied when a table is started or restarted."s, 0.5f, 4.f, 1.f);
 PropBool(Player, SSRefl, "Additive Screen Space Reflection"s, "Add global reflection to the entire scene"s, false);
 PropBool(Player, HDRDisableToneMapper, "Disable tonemapping on HDR display"s, "Do not perform tonemapping when rendering on a high dynamic range (HDR) capable monitor/gfxboard/OS"s, true);
 PropFloat(Player, HDRGlobalExposure, "HDR Display Global Exposure"s, "Global exposure scale multiplier for high dynamic range (HDR) capable monitors"s, 0.f, 5.f, 1.f);

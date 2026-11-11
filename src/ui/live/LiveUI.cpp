@@ -263,6 +263,8 @@ void LiveUI::UpdateScale()
    m_uiScale = min(m_uiScale, 10.f); // To avoid texture size overflows
    if (g_isMobile)
       m_uiScale *= 1.35f;
+   // User UI scale preference (default 1 = no change), applied on player start
+   m_uiScale *= g_settingsService.GetActiveSettings().GetPlayer_UIScale();
    if (m_uiScale != prevDPI)
    {
       m_perfUI.SetUIScale(overlayScale);

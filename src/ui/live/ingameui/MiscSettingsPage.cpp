@@ -42,6 +42,16 @@ void MiscSettingsPage::BuildPage()
 {
    // TODO this property is directly persisted. It does not follow the overall UI design: App/Table/Live state => Implement live state (will also enable table override)
    AddItem(std::make_unique<InGameUIItem>( //
+      Settings::m_propPlayer_UIScale, 1.f, "%4.2fx"s, //
+      [this]() { return g_settingsService.GetActiveSettings().GetPlayer_UIScale(); }, //
+      [this](float, float v)
+      {
+         g_settingsService.GetActiveSettings().SetPlayer_UIScale(v, false);
+         m_difficultyNotification = m_player->m_liveUI->PushNotification("This change will be applied after restarting the player."s, 3000, m_difficultyNotification);
+      }));
+
+   // TODO this property is directly persisted. It does not follow the overall UI design: App/Table/Live state => Implement live state (will also enable table override)
+   AddItem(std::make_unique<InGameUIItem>( //
       Settings::m_propController_DOFContactors, //
       [this]() { return g_settingsService.GetActiveSettings().GetController_DOFContactors(); }, //
       [this](int, int v)
